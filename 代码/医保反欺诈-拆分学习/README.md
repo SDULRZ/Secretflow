@@ -4,8 +4,8 @@
 
 &emsp;&emsp;这些信息可以看作分别由医院和银行提供，于是首先把数据集分给了医院和银行两方，其中银行提供Label（也就是真假），然后对他们的数据进行处理，变为数值。
 
-&emsp;&emsp;然后就可以创建拆分学习模型，因为Label是0和1，所以采用二分类学习，也就是令$activation='sigmoid'$，选择合适的损失函数，令$loss='binary_crossentropy'$。
+&emsp;&emsp;然后就可以创建拆分学习模型，因为Label是0和1，所以采用二分类学习，也就是令activation='sigmoid'，选择合适的损失函数，令loss='binary_crossentropy'。
 
-&emsp;&emsp;之后就可以对模型进行训练，选定了训练轮数为10，也就是$epochs=10$。
+&emsp;&emsp;之后就可以对模型进行训练，选定了训练轮数为10，也就是epochs=10。
 
 &emsp;&emsp;最后输出了相关的训练结果。

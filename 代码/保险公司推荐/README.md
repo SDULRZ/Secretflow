@@ -4,8 +4,8 @@
 
 &emsp;&emsp;这些信息可以看作分别由医院和银行提供，于是首先把数据集分给了医院和银行两方，其中银行提供Label（也就是保险公司名字），然后对他们的数据进行处理，变为数值。
 
-&emsp;&emsp;然后就可以创建拆分学习模型，此时的Label有多个，那么需要采用多分类，令$activation="softmax"$，并且需要修改损失函数，和多分类匹配，令$loss='categorical\_crossentropy'$。
+&emsp;&emsp;然后就可以创建拆分学习模型，此时的Label有多个，那么需要采用多分类，令activation="softmax"，并且需要修改损失函数，和多分类匹配，令loss='categorical_crossentropy'。
 
-&emsp;&emsp;之后就可以对模型进行训练，选定了训练轮数为10，也就是$epochs=10$。
+&emsp;&emsp;之后就可以对模型进行训练，选定了训练轮数为10，也就是epochs=10。
 
 &emsp;&emsp;最后输出了相关的训练结果。
