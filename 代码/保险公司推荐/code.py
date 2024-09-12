@@ -2,6 +2,7 @@ import secretflow as sf
 sf.init(['hospital', 'bank'], address='local')
 hospital, bank = sf.PYU('hospital'), sf.PYU('bank')
 import pandas as pd
+
 #数据分割
 df = pd.read_csv('data.csv')
 hospital_data = df[["Age","Gender","Blood Type","Medical Condition","Doctor","Hospital","Medication","Room Number"]]
@@ -24,6 +25,7 @@ data = v_read_csv({hospital: v_hospital_path, bank: v_bank_path})
 label = v_read_csv({bank: v_label_path})
 from secretflow.preprocessing.scaler import MinMaxScaler
 from secretflow.preprocessing.encoder import LabelEncoder
+
 #数据处理
 encoder = LabelEncoder()
 data['Gender'] = encoder.fit_transform(data['Gender'])
@@ -44,6 +46,7 @@ train_data, test_data = train_test_split(
 train_label, test_label = train_test_split(
     label, train_size=0.8, random_state=random_state
 )
+
 #建立多分类训练模型
 def create_base_model(input_dim, output_dim, name='base_model'):
     def create_model():
@@ -115,6 +118,7 @@ sl_model = SLModel(
     model_fuse=model_fuse,
     dp_strategy_dict=dp_strategy_dict,
 )
+
 #训练模型
 history = sl_model.fit(
     train_data,
