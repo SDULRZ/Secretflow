@@ -133,3 +133,4 @@ history = sl_model.fit(
 )
 global_metric = sl_model.evaluate(test_data, test_label, batch_size=128)
 print(global_metric)
+
