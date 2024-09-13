@@ -3,6 +3,7 @@ sf.init(['hospital', 'bank'], address='local')
 hospital, bank = sf.PYU('hospital'), sf.PYU('bank')
 spu = sf.SPU(sf.utils.testing.cluster_def(['hospital', 'bank']))
 import pandas as pd
+
 #读数据
 df = pd.read_csv('data.csv')
 df["uid"] = df.index + 1
@@ -17,6 +18,7 @@ bank_path = os.path.join(temp_dir, 'bank.csv')
 df_hospital.reset_index(drop=True).to_csv(hospital_path, index=False)
 df_bank.reset_index(drop=True).to_csv(bank_path, index=False)
 from secretflow.data.vertical import read_csv as v_read_csv
+
 #隐私求交
 vdf = v_read_csv(
     {hospital: hospital_path, bank: bank_path},
@@ -27,6 +29,7 @@ vdf = v_read_csv(
 )
 from secretflow.preprocessing.scaler import MinMaxScaler
 from secretflow.preprocessing.encoder import LabelEncoder
+
 #处理数据
 encoder = LabelEncoder()
 vdf['member_name'] = encoder.fit_transform(vdf['member_name'])
@@ -47,6 +50,7 @@ train_label = train_vdf['label']
 test = test_vdf.drop(columns=['label'])
 test_label = test_vdf['label']
 from secretflow.ml.linear.ss_sgd import SSRegression
+
 #训练逻辑回归模型
 lr_model = SSRegression(spu)
 lr_model.fit(
